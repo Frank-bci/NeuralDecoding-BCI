@@ -25,12 +25,6 @@ This project implements a complete neural decoding pipeline that predicts hand m
 - Python 3.8+
 - NWB data file (DANDI dataset 000138)
 
-### Installation
-
-  ```bash
-  git clone https://github.com/YOUR_USERNAME/NeuralDecoding-BCI.git cd NeuralDecoding-BCI
-
-
 ### Install dependencies
 - pip install -r requirements.txt
 
