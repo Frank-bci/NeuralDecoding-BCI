@@ -1,0 +1,20 @@
+# Core dependencies
+numpy>=1.21.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+matplotlib>=3.5.0
+
+# NWB data handling
+pynwb>=2.0.0
+
+# Kalman filter
+pykalman>=0.9.5
+
+# Optional: Jupyter notebooks
+jupyter>=1.0.0
+notebook>=6.4.0
+
+# Development tools (optional)
+black>=22.0.0
+flake8>=4.0.0
+pytest>=7.0.0
