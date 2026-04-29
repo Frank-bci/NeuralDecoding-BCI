@@ -44,15 +44,6 @@ python scripts/run_decoding.py --input data.nwb
 jupyter notebook notebooks/neural_decoding_demo.ipynb
 ```
 
-## Project Structure
-
-```
-src/
-├── decoder.py        # Ridge decoder implementation
-├── kalman_filter.py  # Kalman filter implementations
-├── data_loader.py    # NWB data loading utilities
-└── visualization.py  # Result visualization functions
-```
 
 ## Data Format
 
