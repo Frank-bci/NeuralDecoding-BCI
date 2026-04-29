@@ -46,5 +46,9 @@ This project implements a complete neural decoding pipeline that predicts hand m
 - **System Latency**: 50ms (suitable for real-time control)
 - **Time Bin**: 50ms
 - **Lag Features**: 4 bins (200ms history)
+- **速度解码**
+![Decoding Result](bci_ultimate_victory.png)
+- **在线vs离线完整对比**
+![Decoding Result](online_kalman_decoding_complete.png)
 
-## 🏗️ Architecture
+
