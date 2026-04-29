@@ -1,54 +1,73 @@
 # Neural Decoding: BCI Movement Decoder
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)]()
+A comprehensive neural decoding pipeline for Brain-Computer Interface (BCI) applications, implementing velocity decoding with Ridge regression and position estimation using Kalman filtering.
 
-> A high-performance neural decoding system for Brain-Computer Interface (BCI) applications, achieving R² = 0.92 for position prediction with < 50ms latency.
+## Features
 
-## 🎯 Overview
+- **Velocity Decoding**: Ridge regression-based neural decoding
+- **Position Estimation**: Multiple methods including direct integration and Kalman filtering
+- **Real-time Capable**: Online Kalman filter implementation
+- **EM Learning**: Automatic parameter tuning for Kalman filters
+- **Comprehensive Evaluation**: R², RMSE metrics and visualization
 
-This project implements a complete neural decoding pipeline that predicts hand movement trajectory from neuronal spike activity. The system uses Ridge regression for velocity decoding combined with Kalman filtering for position estimation, achieving state-of-the-art performance suitable for real-time BCI control.
+## Performance Results
 
-### Key Features
+| Method | X-R² | Y-R² | X-RMSE (cm) | Y-RMSE (cm) | Real-time |
+|--------|------|------|-------------|-------------|-----------|
+| Direct Integration | 0.9246 | 0.8254 | 23.92 | 22.54 | ✅ |
+| Offline KF (smooth) | 0.7926 | 0.6866 | 39.67 | 30.20 | ❌ |
+| Online KF (filter) | 0.8974 | 0.8064 | 27.89 | 23.73 | ✅ |
+| Online KF-EM | 0.8948 | 0.8034 | 28.25 | 23.92 | ✅ |
 
-- ✨ **High Accuracy**: Position decoding R² = 0.92 (X), 0.83 (Y)
-- ⚡ **Ultra-low Latency**: < 50ms system delay
-- 🔄 **Real-time Ready**: Online Kalman filter implementation
-- 📊 **Comprehensive Evaluation**: 4 decoding methods compared
-- 🧪 **Reproducible**: Complete pipeline from NWB data to results
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.8+
-- NWB data file (DANDI dataset 000138)
-
-### Install dependencies
-- pip install -r requirements.txt
-
-## 📊 Performance Results
-
-### Decoding Performance Comparison
-
-| Method | X-R² | Y-R² | X-RMSE | Y-RMSE | Real-time |
-|--------|------|------|--------|--------|-----------|
-| **Direct Integration** | **0.925** | **0.825** | **23.9 cm** | **22.5 cm** | ✅ |
-| KF Offline (smooth) | 0.793 | 0.687 | 39.7 cm | 30.2 cm | ❌ |
-| KF Online (filter) | 0.897 | 0.806 | 27.9 cm | 23.7 cm | ✅ |
-| KF-EM Online | 0.895 | 0.803 | 28.3 cm | 23.9 cm | ✅ |
-
-### Key Metrics
-
-- **Velocity Decoding**: R² = 0.80 (X), 0.70 (Y)
-- **Position Decoding**: R² = 0.92 (X), 0.83 (Y)
-- **System Latency**: 50ms (suitable for real-time control)
-- **Time Bin**: 50ms
-- **Lag Features**: 4 bins (200ms history)
 - **速度解码**
 ![Decoding Result](bci_ultimate_victory.png)
 - **在线vs离线完整对比**
 ![Decoding Result](online_kalman_decoding_complete.png)
+
+## Getting Started
+
+### Prerequisites
+
+```bash
+pip install -r requirements.txt
+```
+
+### Usage
+
+```bash
+python scripts/run_decoding.py --input data.nwb
+```
+
+### Jupyter Notebook
+
+```bash
+jupyter notebook notebooks/neural_decoding_demo.ipynb
+```
+
+## Project Structure
+
+```
+src/
+├── decoder.py        # Ridge decoder implementation
+├── kalman_filter.py  # Kalman filter implementations
+├── data_loader.py    # NWB data loading utilities
+└── visualization.py  # Result visualization functions
+```
+
+## Data Format
+
+The pipeline expects data in NWB (Neurodata Without Borders) format with:
+- Spike times for each unit
+- Hand velocity traces with timestamps
+- Trial start/stop times
+
+## License
+
+MIT License
+
+## References
+
+1. Musall, S., et al. (2019). Cortical activity in mice performing a tactile decision task. eLife.
+2. Churchland, M. M., et al. (2012). Neural population dynamics during reaching. Nature.
 
 
