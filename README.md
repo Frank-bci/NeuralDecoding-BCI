@@ -26,4 +26,29 @@ This project implements a complete neural decoding pipeline that predicts hand m
 - NWB data file (DANDI dataset 000138)
 
 ### Installation
+```bash
+git clone https://github.com/YOUR_USERNAME/NeuralDecoding-BCI.git cd NeuralDecoding-BCI
 
+### Install dependencies
+- pip install -r requirements.txt
+
+## 📊 Performance Results
+
+### Decoding Performance Comparison
+
+| Method | X-R² | Y-R² | X-RMSE | Y-RMSE | Real-time |
+|--------|------|------|--------|--------|-----------|
+| **Direct Integration** | **0.925** | **0.825** | **23.9 cm** | **22.5 cm** | ✅ |
+| KF Offline (smooth) | 0.793 | 0.687 | 39.7 cm | 30.2 cm | ❌ |
+| KF Online (filter) | 0.897 | 0.806 | 27.9 cm | 23.7 cm | ✅ |
+| KF-EM Online | 0.895 | 0.803 | 28.3 cm | 23.9 cm | ✅ |
+
+### Key Metrics
+
+- **Velocity Decoding**: R² = 0.80 (X), 0.70 (Y)
+- **Position Decoding**: R² = 0.92 (X), 0.83 (Y)
+- **System Latency**: 50ms (suitable for real-time control)
+- **Time Bin**: 50ms
+- **Lag Features**: 4 bins (200ms history)
+
+## 🏗️ Architecture
